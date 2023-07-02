@@ -1,0 +1,51 @@
+<!-- For this task, you need three small images:
+- one image displays team 1
+- one image displays team 2
+- one image displays team 3
+
+Create a webpage and on the webpage display from left to right: team 1 image, team 2 image, team 3 image.
+Whenever the user clicks on any of the images, the clicked image will move to the left.
+
+Here is an example of how it works:
+- in the beginning, the image order is team 1, team 2, team 3.
+- next, the user clicks on the team 2 image, then the image order becomes: team 2, team 1, team 3.
+- next, the user clicks on the team 3 image, then the image order becomes: team 3, team 2, team 1.
+- next, the user clicks on the team 3 image, then the image order unchanged: team 3, team 2, team 1; because the team 3 image is already on the left.
+- next, the user clicks on the team 1 image, then the image order becomes: team 1, team 3, team 2.
+etc... -->
+
+<html>
+
+<head>
+    <title>Example 4</title>
+    <script>
+
+        function move_img(clicked_image) {
+            var all_images = document.getElementsByTagName('img');
+
+            var index;
+            for (var i = 0; i < all_images.length; i++) {
+                if (all_images[i] == clicked_image) {
+                    index = i;
+                }
+            }
+
+            if (index != 0) {
+                var first_img = all_images[0];
+                var parent = first_img.parentNode;
+                parent.insertBefore(clicked_image, first_img);
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+
+    <img src="images/team1.png" width="250px" height="150px" onclick="move_img(this)" />
+    <img src="images/team2.png" width="250px" height="150px" onclick="move_img(this)" />
+    <img src="images/team3.png" width="250px" height="150px" onclick="move_img(this)" />
+
+</body>
+
+</html>

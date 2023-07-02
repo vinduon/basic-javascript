@@ -1,0 +1,53 @@
+<!-- Create a webpage and on the webpage display:
+- a frog emoji
+- a small picture of a dog
+- a "Reset" button
+- your own a number
+
+Whenever the user clicks the frog emoji, the number will be decreased by 10.
+
+Whenever the user clicks the dog picture, the number will be increased by 5.
+
+Whenever the user clicks the Reset button, the number will be reset back to your original a number.
+
+(Note that at any time, only one number is displayed on your website). -->
+
+<html>
+
+<head>
+    <title>Example 1</title>
+    <script>
+        var NUMBER = 123456;
+
+        function click_frog() {
+            NUMBER -= 10;
+            var number_display = document.getElementById("display");
+            number_display.innerHTML = NUMBER;
+        }
+
+        function click_dog() {
+            NUMBER += 5;
+            var number_display = document.getElementById("display");
+            number_display.innerHTML = NUMBER;
+        }
+
+        function reset_button() {
+            var number_display = document.getElementById("display");
+            if (NUMBER != 123456) {
+                NUMBER = 123456;
+            }
+            number_display.innerHTML = NUMBER;
+        }
+    </script>
+</head>
+
+<body>
+    <span style="font-size: 50px;" onclick="click_frog()">&#x1F438;</span>&nbsp;&nbsp;
+    <img src="images/dog.png" width="120px" onclick="click_dog()" />
+    <br /><br />
+    <button onclick="reset_button()">Reset</button>
+    <br /><br />
+    <p>A number: <span id="display">123456</span></p>
+</body>
+
+</html>

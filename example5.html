@@ -1,0 +1,53 @@
+<!-- Create a webpage and on the webpage display:
+- a text field with instruction "Enter a number"
+- a text field with instruction "Enter a name"
+- a text field with instruction "Enter font size"
+- a text field with instruction "Enter text color"
+- a text field with instruction "Enter background color"
+- a button "Display person info"
+
+Whenever the user clicks the button "Display person info", display the person information in a div with 
+the specified font size, text color and background color. The number is displayed on the line above the person name. -->
+
+<html>
+
+<head>
+    <title>Example 5</title>
+    <script>
+        function display_info(){
+            //Get user input from text fields
+            var number_value = document.getElementById("number").value;
+            var name_value = document.getElementById("name").value;
+            var font_size_value = document.getElementById("font_size").value;
+            var text_color_value = document.getElementById("text_color").value;
+            var bg_color_value = document.getElementById("bg_color").value;
+
+            //Get student information div
+            var st_info_display = document.getElementById("st_info");
+            st_info_display.innerHTML = number_value + "<br />" + name_value;
+
+            //Change font size, color, background color
+            st_info_display.style.fontSize = font_size_value;
+            st_info_display.style.color = text_color_value;
+            st_info_display.style.backgroundColor = bg_color_value;
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="number" placeholder="Enter student number" />
+    <br /><br />
+    <input type="text" id="name" placeholder="Enter student name" />
+    <br /><br />
+    <input type="text" id="font_size" placeholder="Enter font size" />
+    <br /><br />
+    <input type="text" id="text_color" placeholder="Enter text color" />
+    <br /><br />
+    <input type="text" id="bg_color" placeholder="Enter background color" />
+    <br /><br />
+    <button onclick="display_info()">Display person info</button>
+    <br /><br />
+    <div id="st_info"></div>
+</body>
+
+</html>

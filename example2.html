@@ -1,0 +1,45 @@
+<!-- Create a webpage and on the webpage display:
+- a text field
+- a span with red color text "Show full name"
+- a span with green color text "Show a number"
+- a span with orange color text "Clear"
+
+Whenever the user moves the mouse over the text "Show full name", display your full name in the text field.
+
+Whenever the user moves the mouse over the text "Show a number", display your a number in the text field.
+
+Whenever the user moves the mouse over the text "Clear", clear all the text in the text field. -->
+
+<html>
+
+<head>
+    <title>Example 2</title>
+    <script>
+        var FULL_NAME = "Quang Vinh Duong";
+        var NUMBER = 123456;
+        function show_name(){
+            var textbox_display = document.getElementById("textbox");
+            textbox_display.value = FULL_NAME;
+        }
+
+        function show_number(){
+            var textbox_display = document.getElementById("textbox");
+            textbox_display.value = NUMBER;
+        }
+
+        function clear_text(){
+            var textbox_display = document.getElementById("textbox");
+            textbox_display.value = null;
+        }
+    </script>
+</head>
+
+<body>
+    <span style="color: red;" onmouseover="show_name()">Show full name</span>&nbsp;
+    <span style="color: green;" onmouseover="show_number()">Show a number</span>&nbsp;
+    <span style="color: orange;" onmouseover="clear_text()">Clear</span>
+    <br /><br />
+    <input type="text" id="textbox" />
+</body>
+
+</html>

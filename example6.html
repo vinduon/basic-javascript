@@ -1,0 +1,71 @@
+<!-- Create a webpage and on the webpage display:
+- a button "Start animation"
+- a button "End animation"
+
+Whenever the user clicks the button "Start animation", make the animation to display the following number pattern:
+- first display number 0 in orange color
+- 1 second later, display number 1 in blue color
+- 1 second later, display number 2 in orange color
+- 1 second later, display number 3 in blue color
+- 1 second later, display number 4 in orange color
+- 1 second later, display number 5 in blue color
+...
+(note that only 1 number is displayed)
+
+Whenever the user clicks the button "End animation", remove the number from the page. -->
+
+
+<html>
+
+<head>
+    <title>Example 6</title>
+    <script>
+        //Set the initial to store the current value or animation
+        var current_number = 0;
+        var animation;
+
+        function display_number(){
+            //Get displayed number id
+            var number_display = document.getElementById("display");
+
+            //Display number
+            number_display.innerHTML = current_number;
+
+            //Change the color based on the number
+            if (current_number % 2 == 0){
+                number_display.style.color = "orange";
+            } else {
+                number_display.style.color = "blue";
+            }
+            current_number += 1;
+        }
+
+        function start_animation(){
+            //To asure that number will not increase when multiple clicks
+            if (animation) {
+                return;
+            }
+            display_number();
+            animation = setInterval(display_number, 1000);
+        }
+
+        function end_animation(){
+            //Stop and reset number and animation
+            clearInterval(animation);
+            current_number = 0;
+            animation = null;
+            document.getElementById("display").innerHTML = "";
+        }
+        
+
+    </script>
+</head>
+
+<body>
+    <button onclick="start_animation()">Start animation</button>
+    <button onclick="end_animation()">End animation</button>
+    <br /><br />
+    <div style="font-size: 40px;" id="display"></div>
+</body>
+
+</html>

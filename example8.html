@@ -1,0 +1,65 @@
+<!-- To do this task, you need to choose 3 arbitrary emojis of your choice.
+
+Create a webpage and on the webpage display:
+- a button "Start animation"
+- a button "End animation"
+
+Whenever the user clicks the button "Start animation", make the animation to display the following emoji pattern:
+- first display your 1st emoji
+- 1 second later, display your 1st and 2nd emojis
+- 1 second later, display your 1st, 2nd and 3rd emojis
+- 1 second later, display your 1st, 2nd, 3rd and 1st emojis
+- 1 second later, display 1st, 2nd, 3rd, 1st, 2nd emojis
+- 1 second later, display 1st, 2nd, 3rd, 1st, 2nd, 3rd emojis
+- 1 second later, display 1st, 2nd, 3rd, 1st, 2nd, 3rd, 1st emojis
+...
+
+
+Whenever the user clicks the button "End animation", remove all the emojis from the page. -->
+
+
+<html>
+
+<head>
+    <title>Example 8</title>
+    <script>
+        var MELON_EMO = "&#127817";
+        var LION_EMO = "&#129409";
+        var CACTUS_EMO = "&#127797";
+        var animation;
+        var emoji_list = [MELON_EMO, LION_EMO, CACTUS_EMO];
+
+        function start_animation(){
+            var emoji_display = document.getElementById("display");
+            clearInterval(animation);
+            emoji_display.innerHTML = "";
+            emoji_display.innerHTML = emoji_list[0];
+            var index = 1;
+
+            function display_emoji(){
+                var new_emoji = document.createElement("span");
+                new_emoji.innerHTML = emoji_list[index];
+                emoji_display.appendChild(new_emoji);
+                index = (index + 1) % emoji_list.length;
+            }
+
+            animation = setInterval(display_emoji, 1000);
+
+        }
+
+        function end_animation(){
+            clearInterval(animation);
+            document.getElementById("display").innerHTML = "";
+        }
+
+    </script>
+</head>
+
+<body>
+    <button onclick="start_animation()">Start animation</button>
+    <button onclick="end_animation()">End animation</button>
+    <br /><br />
+    <div style="font-size: 40px;" id="display"></div>
+</body>
+
+</html>

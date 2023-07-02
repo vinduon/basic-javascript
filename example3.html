@@ -1,0 +1,40 @@
+<!-- Create a webpage and on the webpage display:
+- a button "Add emoji"
+
+Whenever the user clicks the button "Add emoji", one more emoji will be added to the webpage:
+- when user clicks "Add emoji" the first time, display one flower emoji;
+- if the user clicks "Add emoji" again, display two emojis: flower and smiling face;
+- if the user clicks "Add emoji" again, display three emojis: flower, smiling face and flower;
+- if the user clicks "Add emoji" again, display four emojis: flower, smiling face, flower and smiling face;
+and the pattern keeps going like this. -->
+
+<html>
+
+<head>
+    <title>Example 3</title>
+    <script>
+        var FLOWER_EMO = "&#x1F33C";
+        var SMILING_EMO = "&#128578";
+        var EMO_SEQ = "";
+        var count = 1;
+        function add_emoji() {
+            var emo_display = document.getElementById("display");
+            if (count % 2 == 0) {
+                EMO_SEQ += SMILING_EMO;
+            } else {
+                EMO_SEQ += FLOWER_EMO;
+            }
+            emo_display.innerHTML = EMO_SEQ;
+            count += 1;
+        }
+
+    </script>
+</head>
+
+<body>
+    <button onclick="add_emoji()">Add emoji</button>
+    <br /><br />
+    <span style="font-size: 25px;" id="display"></span>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!-- Create a webpage and on the webpage display:
+- a text field with instruction "Enter the start number"
+- a button "Start animation"
+
+Whenever the user enters a start number (which is a positive integer) and clicks the button "Start animation", make the animation to display the following number pattern:
+- first display the start number
+- every 1 second later, decrease the number by 1
+- when the number reaches 0, the animation automatically stops and the number 0 remains displayed on the website. -->
+
+<html>
+
+<head>
+    <title>Example 7</title>
+    <script>
+        //Set the initial to store the current animation
+        var animation;
+        function start_animation() {
+            //Get user input value
+            var start_number = Number(document.getElementById("text_box").value);
+            
+            function display_number() {
+                start_number -= 1;
+                if (start_number >= 0) {
+                    document.getElementById("display").innerHTML = start_number;
+                } else {
+                    //To stop at 0
+                    clearInterval(animation);
+                }
+            }
+            
+            if (!isNaN(start_number) && start_number > 0 && Number.isInteger(start_number)) {
+                //Reset and avoid overlapping animation when multi-clicks
+                clearInterval(animation);
+                document.getElementById("display").innerHTML = start_number;
+                animation = setInterval(display_number, 1000);
+
+            } else {
+                alert("Please enter a positive integer for the start number.");
+                return;
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="text" id="text_box" placeholder="Enter the start number" />
+    <button onclick="start_animation()">Start animation</button>
+    <br /><br />
+    <div style="font-size: 30px;" id="display"></div>
+</body>
+
+</html>
